@@ -4,7 +4,7 @@ set -e
 
 SCRIPT_DIR="$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
 CONFIG_FILE=$SCRIPT_DIR/install.conf
-DEFAULT_APP=SCRIPT_DIR/default_app.txt
+DEFAULT_APP=$SCRIPT_DIR/default_app.txt
 source $CONFIG_FILE
 
 
