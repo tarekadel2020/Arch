@@ -53,6 +53,7 @@ echo -ne "
 "
 	#reflector -a 48 -c $iso -f 5 -l 20 --sort rate --save /etc/pacman.d/mirrorlist
 	reflector --sort rate -l 5 --save /etc/pacman.d/mirrorlist
+	pacman -Syy
 	mkdir /mnt &>/dev/null # Hiding error message if any
 }
 
