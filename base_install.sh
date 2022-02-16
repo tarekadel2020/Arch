@@ -138,7 +138,7 @@ echo -ne "
 -------------------------------------------------------------------------
 "
 	genfstab -U /mnt >> /mnt/etc/fstab
-	arch-chroot /mnt timedatectl set-timezone $TIMEZONE
+	#arch-chroot /mnt timedatectl set-timezone $TIMEZONE
 	arch-chroot /mnt sed -i 's/#en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen
 	arch-chroot /mnt  locale-gen
 	arch-chroot /mnt touch /etc/locale.conf
@@ -147,14 +147,19 @@ echo -ne "
 	arch-chroot /mnt  echo "arch" > /etc/hostname
 	arch-chroot /mnt touch /etc/hosts
 	arch-chroot /mnt  echo -e "127.0.0.1	localhost\n::1	localhost\n127.0.1.1	arch.localdomain	arch" >> /etc/hosts
-	arch-chroot /mnt ln -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime
-	arch-chroot /mnt localectl --no-ask-password set-keymap ${KEYMAP}
+	#arch-chroot /mnt ln -s /usr/share/zoneinfo/$TIMEZONE /etc/localtime
+	#arch-chroot /mnt localectl --no-ask-password set-keymap ${KEYMAP}
 	sed -i 's/^# %wheel ALL=(ALL) ALL/%wheel ALL=(ALL) ALL/' /mnt/etc/sudoers
 
 }
 
 
 default_app (){
+echo -ne "
+-------------------------------------------------------------------------
+                    Install Default APP
+-------------------------------------------------------------------------
+"
 	cat $DEFAULT_APP | while read line 
 	do
     		echo "INSTALLING: ${line}"
